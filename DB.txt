@@ -1,0 +1,37 @@
+create database storeOrder default character set utf8;
+use storeOrder;
+
+drop table if exists orders;
+create table orders(
+  id int auto_increment primary key,
+  date datetime default null,
+  userName varchar(5) default null
+);
+
+drop table if exists orderDetail;
+create table orderDetail(
+  id int auto_increment primary key,
+  productId int(11) not null default 0,
+  price int(11) not null default 0
+);
+
+drop table if exists products;
+create table products(
+  id int auto_increment primary key,
+  productName varchar(40) not null default '',
+  supplierId int(11) default null,
+  price int(11) not null default '0'
+);
+
+drop table if exists suppliers;
+create table suppliers(
+  id int auto_increment primary key,
+  supplierName varchar(40) not null default '',
+  address varchar(40) not null default '',
+  phone varchar(24) default null
+);
+
+insert into suppliers(supplierName, address, phone) values ('大福公司', '大福路184號', '123456789'),('大魚公司', '大魚路184號', '123456789');
+insert into products(productName, supplierId, price) values ('卡拉便當', 1, 60), ('雞腿便當', 1, 60), ('排骨便當', 1, 60), ('卡拉便當', 2, 60), ('排骨便當', 2, 60);
+insert into orders (date, userName) values ('2020-08-09 00:00:00', '球魚'), ('2020-08-10 00:00:00', '小球魚'), ('2020-08-11 00:00:00', '球球魚');
+insert into orderDetail(productId , price) values (1, 120), (2, 120), (2, 120);
