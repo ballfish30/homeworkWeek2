@@ -10,7 +10,7 @@ create table orders(
 
 drop table if exists orderDetail;
 create table orderDetail(
-  id int auto_increment primary key,
+  id int(11) not null default 0,
   productId int(11) not null default 0,
   price int(11) not null default 0
 );
